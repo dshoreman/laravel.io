@@ -67,10 +67,12 @@
                     Register
                 </a>
 
-                <x-buttons.secondary-cta class="flex items-center ml-6" href="{{ route('login') }}">
-                    <x-heroicon-o-user class="w-5 h-5 mr-1" />
-                    Login
-                </x-buttons.secondary-cta>
+                <div class="ml-6">
+                    <x-buttons.secondary-cta class="flex items-center" href="{{ route('login') }}">
+                        <x-heroicon-o-user class="w-5 h-5 mr-1" />
+                        Login
+                    </x-buttons.secondary-cta>
+                </div>
             @else
                 <x-avatar :user="Auth::user()" class="h-8 w-8 mr-3 ml-6" />
                 {{ Auth::user()->name() }}

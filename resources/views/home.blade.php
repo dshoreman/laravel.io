@@ -4,7 +4,7 @@
     @include('layouts._alerts')
 
     <!-- Head section -->
-    <section class="my-20 overflow-x-hidden">
+    <section class="my-20">
         <div class="container mx-auto flex items-center my-20">
             <div class="w-1/2">
                 <h1 class="font-sans text-6xl font-bold text-gray-900 leading-tight mb-3">
