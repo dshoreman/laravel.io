@@ -1,4 +1,4 @@
-<nav class="container mx-auto py-8 text-gray-800">
+<nav class="hidden md:block container mx-auto py-8 text-gray-800">
     <div class="w-full flex items-center">
         <div class="w-full flex items-center">
             <a href="{{ route('home') }}" class="mr-4">

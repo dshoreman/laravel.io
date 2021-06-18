@@ -7,7 +7,7 @@
     'isFeatured' => false,
 ])
 
-<div>
+<div class="mb-8 md:mb-0">
     @if ($image)
         <img src="{{ $image }}" class="mb-6 rounded-lg h-72" />
     @endif
