@@ -76,22 +76,66 @@
         <div class="w-full flex items-center justify-end">
             @include('_partials._search')
 
-            @if (Auth::guest())
-                <a href="{{ route('register') }}" class="ml-6">
-                    Register
-                </a>
+            <ul class="flex">
+                @if (Auth::guest())
+                    <li>
+                        <a href="{{ route('register') }}" class="ml-6">
+                            Register
+                        </a>
+                    </li>
 
-                <div class="ml-6">
-                    <x-buttons.secondary-cta class="flex items-center" href="{{ route('login') }}">
-                        <x-heroicon-o-user class="w-5 h-5 mr-1" />
-                        Login
-                    </x-buttons.secondary-cta>
-                </div>
-            @else
-                <x-avatar :user="Auth::user()" class="h-8 w-8 mr-3 ml-6" />
-                {{ Auth::user()->name() }}
-                <x-heroicon-s-chevron-down class="w-4 h-4 ml-1"/>
-            @endif
+                    <li>
+                        <div class="ml-6">
+                            <x-buttons.secondary-cta class="flex items-center" href="{{ route('login') }}">
+                                <x-heroicon-o-user class="w-5 h-5 mr-1" />
+                                Login
+                            </x-buttons.secondary-cta>
+                        </div>
+                    </li>
+                @else
+                    <li class="flex items-center">
+                        <x-avatar :user="Auth::user()" class="h-8 w-8 mr-3 ml-6" />
+
+                        <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                            <button @click="open = !open" class="flex items-center">
+                                {{ Auth::user()->name() }}
+                                <x-heroicon-s-chevron-down x-show="!open" class="w-4 h-4 ml-1"/>
+                                <x-heroicon-s-chevron-left x-show="open" class="w-4 h-4 ml-1"/>
+                            </button>
+
+                            <div x-show="open" x-cloak>
+                                <div class="absolute flex flex-col mt-2 w-36 rounded-md shadow-lg z-50 bg-white">
+                                    <a href="{{ route('dashboard') }}" class="p-4 hover:bg-gray-100">
+                                        Dashboard
+                                    </a>
+
+                                    <a href="{{ route('profile', Auth::user()->username()) }}" class="p-4 hover:bg-gray-100">
+                                        Your Profile
+                                    </a>
+
+                                    <a href="{{ route('user.articles') }}" class="p-4 hover:bg-gray-100">
+                                        Your Articles
+                                    </a>
+
+                                    <a href="{{ route('settings.profile') }}" class="p-4 hover:bg-gray-100">
+                                        Settings
+                                    </a>
+
+                                    @can(App\Policies\UserPolicy::ADMIN, App\Models\User::class)
+                                        <a href="{{ route('admin') }}" class="p-4 hover:bg-gray-100 border-t border-b">
+                                            Admin
+                                        </a>
+                                    @endcan
+
+                                    <a href="{{ route('logout') }}" class="p-4 hover:bg-gray-100">
+                                        Sign out
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>
