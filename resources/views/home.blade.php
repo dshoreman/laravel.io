@@ -194,6 +194,47 @@
 
             <div class="flex mb-16">
                 <div class="w-1/3 mr-5">
+                    <x-articles.summary 
+                        image="https://via.placeholder.com/800" 
+                        title="Releasing Blade Icons v1.0" 
+                        summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
+                        date="March 15th 2021"
+                        url="#"
+                        is-featured
+                    />
+                </div>
+
+                <div class="w-1/3 mr-5">
+                    <x-articles.summary 
+                        image="https://via.placeholder.com/800" 
+                        title="Releasing Blade Icons v1.0" 
+                        summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
+                        date="March 15th 2021"
+                        url="#"
+                        is-featured
+                    />
+                </div>
+
+                <div class="w-1/3">
+                    <div class="border-b-2 border-gray-200 h-72">
+                        <x-articles.summary 
+                            title="Releasing Blade Icons v1.0" 
+                            summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
+                            date="March 15th 2021"
+                            url="#"
+                        />
+                    </div>
+
+                    <div class="pt-6">
+                        <x-articles.summary 
+                            title="Releasing Blade Icons v1.0" 
+                            summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
+                            date="March 15th 2021"
+                            url="#"
+                        />
+                    </div>
+                </div>
+                {{-- <div class="w-1/3 mr-5">
                     <img src="https://via.placeholder.com/800" class="mb-6 rounded-lg h-72" />
                     <span class="font-mono text-gray-700 leading-6 mb-2 block">March 15th 2021</span>
                     <h3 class="text-gray-900 text-3xl font-bold leading-10 mb-2">Releasing Blade Icons v1.0</h3>
@@ -239,7 +280,7 @@
                             Read article
                         </x-buttons.arrow-button>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="flex justify-center">
