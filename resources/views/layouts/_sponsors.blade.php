@@ -43,7 +43,7 @@
         </div>
 
         <div class="mt-4">
-            @include('layouts._ads._cta', ['text' => 'Your logo here?'])
+            @include('layouts._ads._cta', ['text' => 'Your logo here?', 'primary' => true])
         </div>
     </div>
 </div>
