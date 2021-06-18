@@ -90,7 +90,7 @@ nav.dashboard-nav a.active {
 
 .member:after {
     bottom: -1rem;
-    content: " ";
+    content: ' ';
     display: block;
     left: 7rem;
     position: absolute;
