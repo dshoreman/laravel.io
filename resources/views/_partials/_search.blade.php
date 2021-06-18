@@ -12,7 +12,7 @@
             type="text" 
             name="search" 
             id="search" 
-            class="block pl-10 border rounded" 
+            class="block pl-10 border border-gray-300 rounded" 
             placeholder="Search for threads and articles..."
         />
 

@@ -4,7 +4,7 @@
 
 <div class="bg-gray-900 text-white">
     <div class="container mx-auto pt-20 pb-8">
-        <div class="mx-32">
+        <div class="mx-20">
             <div class="flex pb-16 mb-8 border-b border-gray-800">
                 <div class="flex-grow">
                     <a href="" class="block mb-5">
