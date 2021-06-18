@@ -12,45 +12,59 @@
             type="text" 
             name="search" 
             id="search" 
-            class="block pl-10 border border-gray-300 rounded" 
+            class="block pl-10 border border-gray-300 rounded w-full" 
             placeholder="Search for threads and articles..."
         />
 
         <template x-if="results">
-            <div x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="search mt-1 origin-top-right absolute right-0 rounded-md shadow-lg z-10">
-                <div class="rounded-md bg-white ring-1 ring-black ring-opacity-5 w-full">
-                    <div class="flex flex-col border-b md:flex-row">
-                        <div class="py-1 w-full border-b md:w-1/2 md:border-r md:border-b-0">
-                            <span class="text-xl px-4 py-2 text-gray-700">Threads</span>
-                            <template x-for="thread in threads" :key="thread.subject">
-                                <a :href="'/forum/'+thread.slug" class="block px-4 py-2 text-base leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
-                                    <span class="block font-bold break-all" x-html="thread._highlightResult.subject.value"></span>
-                                    <span class="block text-sm txt-gray-400 break-all" x-html="thread._snippetResult.body.value"></span>
-                                </a>
-                            </template>
-                            <span x-show="threads.length === 0" x-cloak class="px-4 text-gray-500 block">
-                                No threads found
-                            </span>
+            <div class="search absolute origin-top-right right-0 rounded shadow-lg bg-white mt-2 z-50">
+                <div class="flex">
+                    <div class="w-1/2 flex-none border-r border-b">
+                        <div class="flex text-lg font-medium border-b p-4">
+                            <span class="text-gray-900 mr-3">Threads</span>
+
+                            <span class="text-gray-300" x-text="threads.length + ' Results'"></span>
                         </div>
 
-                        <div class="py-1 w-full md:w-1/2">
-                            <span class="text-xl px-4 py-2 text-gray-700">Articles</span>
-                            <template x-for="article in articles" :key="article.title">
-                                <a :href="'/articles/'+article.slug" class="block px-4 py-2 text-base leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
-                                    <span class="block font-bold break-all" x-html="article._highlightResult.title.value"></span>
-                                    <span class="block text-sm txt-gray-400 break-all" x-html="article._snippetResult.body.value"></span>
+                        <div class="max-h-72 overflow-y-scroll">
+                            <template x-for="thread in threads" :key="thread.subject">
+                                <a :href="'/forum/'+thread.slug" class="flex flex-col px-4 py-2 hover:bg-lio-100">
+                                    <span class="text-black-900 text-lg font-medium break-all" x-html="thread._highlightResult.subject.value"></span>
+                                    <span class="text-black-900 break-all" x-html="thread._snippetResult.body.value"></span>
                                 </a>
                             </template>
-                            <span x-show="articles.length === 0" x-cloak class="px-4 text-gray-500 block">
-                                No articles found
-                            </span>
                         </div>
+
+                        <span x-show="threads.length === 0" x-cloak class="p-4 text-gray-500 block">
+                            No threads found
+                        </span>
                     </div>
 
-                    <a href="https://algolia.com" class="flex justify-end">
-                        <img src="{{ asset('images/algolia.svg') }}" class="h-4 mx-4 my-2" />
-                    </a>
+                    <div class="w-1/2 flex-none border-b">
+                        <div class="flex text-lg font-medium border-b p-4">
+                            <span class="text-gray-900 mr-3">Articles</span>
+
+                            <span class="text-gray-300" x-text="threads.length + ' Results'"></span>
+                        </div>
+
+                        <div class="max-h-72 overflow-y-scroll">
+                            <template x-for="article in articles" :key="article.title">
+                                <a :href="'/articles/'+article.slug" class="flex flex-col px-4 py-2 hover:bg-lio-100">
+                                    <span class="text-black-900 text-lg font-medium break-all" x-html="article._highlightResult.title.value"></span>
+                                    <span class="text-black-900 break-all" x-html="article._snippetResult.body.value"></span>
+                                </a>
+                            </template>
+                        </div>
+
+                        <span x-show="articles.length === 0" x-cloak class="p-4 text-gray-500 block">
+                            No articles found
+                        </span>
+                    </div>
                 </div>
+
+                <a href="https://algolia.com" class="flex justify-end px-4 py-2">
+                    <img src="{{ asset('images/algolia.svg') }}" class="h-4 mx-4 my-2" />
+                </a>
             </div>
         </template>
     </div>
