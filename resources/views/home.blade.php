@@ -175,29 +175,11 @@
         <h2 class="text-4xl leading-tight font-bold text-center text-gray-900 mb-12">Laravel.io in numbers</h2>
 
         <div class="flex mb-10 mx-20">
-            <div class="flex flex-col items-center rounded w-1/3 bg-lio-100 mr-6 py-9">
-                <h3 class="uppercase text-lio-500 text-lg font-bold text-center mb-11">
-                    Users
-                    <span class="text-4xl text-gray-900 block leading-tight">46,564</span>
-                </h3>
-                <img src="{{ asset('images/users.png') }}" />
-            </div>
+            <x-number-block title="Users" total="45,100" :background="asset('images/users.png')" />
 
-            <div class="flex flex-col items-center rounded w-1/3 bg-lio-100 mr-6 py-9">
-                <h3 class="uppercase text-lio-500 text-lg font-bold text-center mb-11">
-                    Threads
-                    <span class="text-4xl text-gray-900 block leading-tight">18,183</span>
-                </h3>
-                <img src="{{ asset('images/threads.png') }}" />
-            </div>
+            <x-number-block title="Threads" total="18,183" :background="asset('images/threads.png')" />
 
-            <div class="flex flex-col items-center rounded w-1/3 bg-lio-100 mr-6 py-9 shadow-inner-xl">
-                <h3 class="uppercase text-lio-500 text-lg font-bold text-center mb-11">
-                    Replies
-                    <span class="text-4xl text-gray-900 block leading-tight">500,100</span>
-                </h3>
-                <img src="{{ asset('images/replies.png') }}" />
-            </div>
+            <x-number-block title="Replies" total="500,100" :background="asset('images/replies.png')" />
         </div>
     </section>
     <!-- /Laravel.io in numbers -->
