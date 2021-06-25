@@ -14,22 +14,33 @@
                     <div class="mb-5">
                         <p class="text-gray-800 text-lg leading-8 font-medium">
                             The Laravel portal for problem solving, knowledge sharing<br>
-                            and community building. Join <x-accent-text href="">46,564</x-accent-text> other artisans.
+                            and community building. Join <x-accent-text>{{ $totalUsers }}</x-accent-text> other artisans.
                         </p>
                     </div>
 
                     <div>
-                        <x-buttons.primary-cta class="w-full mb-3 md:w-auto md:mr-2">
-                            Join the community
-                        </x-buttons.primary-cta>
-                        <x-buttons.secondary-cta class="w-full md:w-auto">
-                            Visit the forum
-                        </x-buttons.secondary-cta>
+                        @if (Auth::guest())
+                            <x-buttons.primary-cta href="{{ route('register') }}" class="w-full mb-3 md:w-auto md:mr-2">
+                                Join the community
+                            </x-buttons.primary-cta>
+
+                            <x-buttons.secondary-cta href="{{ route('forum') }}" class="w-full md:w-auto">
+                                Visit the forum
+                            </x-buttons.secondary-cta>
+                        @else
+                            <x-buttons.primary-cta href="{{ route('threads.create') }}" class="w-full mb-3 md:w-auto md:mr-2">
+                                Start a Thread
+                            </x-buttons.primary-cta>
+
+                            <x-buttons.primary-cta href="{{ route('articles.create') }}" class="w-full mb-3 md:w-auto md:mr-2">
+                                Share an Article
+                            </x-buttons.primary-cta>
+                        @endif
                     </div>
                 </div>
 
                 <div class="md:w-1/2">
-                    <x-community-members />
+                    <x-community-members :members="$communityMembers" />
                 </div>
             </div>
         </div>
@@ -88,42 +99,19 @@
             </div>
 
             <div class="flex overflow-x-scroll mb-4 -mr-4 p-4 md:mb-10">
-                <div class="flex-shrink-0 w-11/12 md:w-1/3">
-                    <x-threads.summary
-                        name="Tim Cook"
-                        avatar="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=3iakaAt3nn&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                        title="Cloudinary Laravel SDK"
-                        summary="Hey, Does anyone have experience with cloudinary-laravel-sdk..."
-                        time="4 hours ago"
-                        url="#"
-                    />
-                </div>
 
-                <div class="flex-shrink-0 w-11/12 md:w-1/3">
-                    <x-threads.summary
-                        name="Tim Cook"
-                        avatar="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=3iakaAt3nn&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                        title="Cloudinary Laravel SDK"
-                        summary="Hey, Does anyone have experience with cloudinary-laravel-sdk..."
-                        time="4 hours ago"
-                        url="#"
-                    />
-                </div>
+                @foreach ($latestThreads as $thread)
+                    <div class="flex-shrink-0 w-11/12 md:w-1/3">
+                        <x-threads.summary
+                            :thread="$thread"
+                        />
+                    </div>
+                @endforeach
 
-                <div class="flex-shrink-0 w-11/12 md:w-1/3">
-                    <x-threads.summary
-                        name="Tim Cook"
-                        avatar="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=3iakaAt3nn&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                        title="Cloudinary Laravel SDK"
-                        summary="Hey, Does anyone have experience with cloudinary-laravel-sdk..."
-                        time="4 hours ago"
-                        url="#"
-                    />
-                </div>
             </div>
 
             <div class="flex justify-center px-4">
-                <x-buttons.primary-cta href="" class="w-full md:w-auto">
+                <x-buttons.primary-cta href="{{ route('forum') }}" class="w-full md:w-auto">
                     View all threads
                 </x-buttons.primary-cta>
             </div>
@@ -137,15 +125,15 @@
 
         <div class="flex flex-col md:mb-10 mx-4 md:flex-row md:mx-20">
             <div class="w-full flex-shrink-0 md:w-1/3">
-                <x-number-block title="Users" total="45,100" :background="asset('images/users.png')" />
+                <x-number-block title="Users" :total="$totalUsers" :background="asset('images/users.png')" />
             </div>
 
             <div class="w-full flex-shrink-0 md:w-1/3">
-                <x-number-block title="Threads" total="18,183" :background="asset('images/threads.png')" />
+                <x-number-block title="Threads" :total="$totalThreads" :background="asset('images/threads.png')" />
             </div>
 
             <div class="w-full flex-shrink-0 md:w-1/3">
-                <x-number-block title="Replies" total="500,100" :background="asset('images/replies.png')" />
+                <x-number-block title="Replies" :total="$totalReplies" :background="asset('images/replies.png')" />
             </div>
         </div>
     </section>
@@ -162,49 +150,33 @@
             <div class="flex flex-col md:flex-row md:mb-16">
                 <div class="w-full md:w-1/3 md:mr-5">
                     <x-articles.summary 
-                        image="https://via.placeholder.com/800" 
-                        title="Releasing Blade Icons v1.0" 
-                        summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
-                        date="March 15th 2021"
-                        url="#"
+                        image="https://images.unsplash.com/photo-1541280910158-c4e14f9c94a3?auto=format&fit=crop&w=1000&q=80" 
+                        :article="$latestArticles->first()"
                         is-featured
                     />
                 </div>
 
                 <div class="w-full md:w-1/3 md:mr-5">
                     <x-articles.summary 
-                        image="https://via.placeholder.com/800" 
-                        title="Releasing Blade Icons v1.0" 
-                        summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
-                        date="March 15th 2021"
-                        url="#"
+                        image="https://images.unsplash.com/photo-1584824486516-0555a07fc511?auto=format&fit=crop&w=1000&q=80" 
+                        :article="$latestArticles->get(1)"
                         is-featured
                     />
                 </div>
 
                 <div class="w-full md:w-1/3">
                     <div class="md:border-b-2 md:border-gray-200 md:h-72">
-                        <x-articles.summary 
-                            title="Releasing Blade Icons v1.0" 
-                            summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
-                            date="March 15th 2021"
-                            url="#"
-                        />
+                        <x-articles.summary  :article="$latestArticles->get(2)" />
                     </div>
 
                     <div class="md:pt-6">
-                        <x-articles.summary 
-                            title="Releasing Blade Icons v1.0" 
-                            summary="Laracon Online 2021 is coming to you live on March 17th, 2021! No hotels, no airfare, just signup and spend the day watching some of the best speaker..."
-                            date="March 15th 2021"
-                            url="#"
-                        />
+                        <x-articles.summary :article="$latestArticles->get(3)" />
                     </div>
                 </div>
             </div>
 
             <div class="flex justify-center">
-                <x-buttons.primary-cta href="#" class="w-full md:w-auto">
+                <x-buttons.primary-cta href="{{ route('articles') }}" class="w-full md:w-auto">
                     View all articles
                 </x-buttons.primary-cta>
             </div>
