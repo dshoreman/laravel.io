@@ -35,7 +35,7 @@
     @livewireStyles
 </head>
 
-<body class="{{ $bodyClass ?? '' }} {{ isset($isTailwindUi) && $isTailwindUi ? '' : 'standard' }} font-sans bg-white antialiased" x-data="{ activeModal: null }">
+<body class="{{ $bodyClass ?? '' }} font-sans bg-white antialiased" x-data="{ activeModal: null }">
 
 @include('layouts._ads._banner')
 @include('layouts._nav')
