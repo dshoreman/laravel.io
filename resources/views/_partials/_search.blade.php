@@ -1,4 +1,4 @@
-<div class="" x-data="{ results: false, threads: [], articles: [] }">
+<div x-data="{ results: false, threads: [], articles: [] }">
     <label for="search" class="sr-only">Search</label>
 
     <div class="relative">
@@ -12,14 +12,14 @@
             type="text" 
             name="search" 
             id="search" 
-            class="block pl-10 border border-gray-300 rounded w-full" 
+            class="border-0 border-t border-b block pl-10 border-gray-300 md:border md:rounded w-full" 
             placeholder="Search for threads and articles..."
         />
 
         <template x-if="results">
-            <div class="search absolute origin-top-right right-0 rounded shadow-lg bg-white mt-2 z-50">
-                <div class="flex">
-                    <div class="w-1/2 flex-none border-r border-b">
+            <div class="search absolute md:origin-top-right md:right-0 md:rounded md:shadow-lg bg-white md:mt-2 z-50">
+                <div class="flex flex-col md:flex-row">
+                    <div class="w-full flex-none border-r border-b md:w-1/2">
                         <div class="flex text-lg font-medium border-b p-4">
                             <span class="text-gray-900 mr-3">Threads</span>
 
@@ -40,7 +40,7 @@
                         </span>
                     </div>
 
-                    <div class="w-1/2 flex-none border-b">
+                    <div class="w-full flex-none border-b md:w-1/2">
                         <div class="flex text-lg font-medium border-b p-4">
                             <span class="text-gray-900 mr-3">Articles</span>
 
