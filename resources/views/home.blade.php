@@ -5,15 +5,15 @@
 
     <!-- Head section -->
     <section class="overflow-x-hidden">
-        <div class="container mx-auto mt-6 md:my-20">
-            <div class="flex flex-col items-center mx-4 md:flex-row md:mx-20">
-                <div class="w-full mb-8 md:w-1/2 md:mb-0">
-                    <h1 class="text-3xl md:text-6xl font-bold text-gray-900 leading-tight mb-3">
+        <div class="container mx-auto mt-6 lg:my-20">
+            <div class="flex flex-col items-center mx-4 lg:flex-row md:mx-20">
+                <div class="w-full mb-8 lg:w-1/2 md:mb-0">
+                    <h1 class="text-3xl lg:text-6xl font-bold text-gray-900 leading-tight mb-3">
                         The Laravel Community Portal
                     </h1>
                     <div class="mb-5">
                         <p class="text-gray-800 text-lg leading-8 font-medium">
-                            The Laravel portal for problem solving, knowledge sharing<br>
+                            The Laravel portal for problem solving, knowledge sharing
                             and community building. Join <x-accent-text>{{ $totalUsers }}</x-accent-text> other artisans.
                         </p>
                     </div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <div class="md:w-1/2">
+                <div class="lg:w-1/2">
                     <x-community-members :members="$communityMembers" />
                 </div>
             </div>
