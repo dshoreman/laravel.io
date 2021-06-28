@@ -21,7 +21,7 @@ class TagSeeder extends Seeder
             $article->syncTags(
                 $tags->random(rand(0, $tags->count()))
                     ->pluck('id')
-                    ->toArray()
+                    ->toArray(),
             );
         });
 
@@ -29,7 +29,7 @@ class TagSeeder extends Seeder
             $article->syncTags(
                 $tags->random(rand(0, $tags->count()))
                     ->pluck('id')
-                    ->toArray()
+                    ->toArray(),
             );
         });
     }

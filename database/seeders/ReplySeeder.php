@@ -22,7 +22,7 @@ class ReplySeeder extends Seeder
                 ->state(new Sequence(
                     fn () => [
                         'author_id' => $users->random()->id,
-                        'replyable_id' => $thread->id
+                        'replyable_id' => $thread->id,
                     ],
                 ))
                 ->create();

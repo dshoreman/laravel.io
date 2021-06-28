@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
-use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -32,8 +31,8 @@ class UserSeeder extends Seeder
                         new Sequence(
                             ['submitted_at' => now(), 'approved_at' => now()],
                             ['submitted_at' => now()],
-                        )
-                    )
+                        ),
+                    ),
             )
             ->create();
     }
