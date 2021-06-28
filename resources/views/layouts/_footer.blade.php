@@ -4,7 +4,7 @@
 
 <div class="bg-gray-900 text-white">
     <div class="container mx-auto pt-7 pb-8 lg:pt-20 ">
-        <div class="mx-4 lg:mx-20">
+        <div class="mx-4 md:mx-0">
             <div class="flex flex-col pb-8 mb-8 border-b lg:pb-16 border-gray-800 lg:flex-row">
                 <div class="w-full mb-6 lg:w-2/5 lg:pr-20 lg:mb-0">
                     <a href="" class="block mb-5">
@@ -66,7 +66,7 @@
                                 The community
                             </h6>
 
-                            <div class="flex flex-col">
+                            <div class="flex flex-col flex-nowrap">
                                 <div class="flex mb-4 lg:mb-6">
                                     <a href="https://laravel.com" class="w-1/2 text-gray-400">
                                         <img src="{{ asset('images/laravel.png') }}" alt="Laravel" class="w-4 h-4 inline mr-2" />

@@ -1,5 +1,5 @@
 <div class="container mx-auto flex justify-center mt-14">
-    <div class="w-full mx-4 text-center md:w-2/3">
+    <div class="w-full mx-4 text-center">
         <p class="text-base mb-6 md:text-lg md:mb-12">
             We'd like to thank these <x-accent-text>amazing companies</x-accent-text> for supporting us
         </p>
